@@ -38,7 +38,7 @@ export default function CartDrawer() {
               <ul className="space-y-4">
                 {items.map((item) => (
                   <li
-                    key={item.id}
+                    key={item.name}
                     className="flex justify-between items-start border-b pb-2"
                   >
                     <div>

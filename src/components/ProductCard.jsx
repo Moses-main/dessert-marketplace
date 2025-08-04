@@ -1,8 +1,11 @@
 import { useState } from "react";
 import CartModal from "./CartModal";
+// import { FaCartArrowDown } from "react-icons/fa6";
+import { FaCartShopping } from "react-icons/fa6";
 
 export default function ProductCard({ product }) {
   const [showModal, setShowModal] = useState(false);
+
   const [quantity, setQuantity] = useState(1);
   const [hovered, setHovered] = useState(false);
 
@@ -55,7 +58,11 @@ export default function ProductCard({ product }) {
                 </button>
               </>
             ) : (
-              "Add to Cart"
+              <>
+                <div className="flex items-center gap-2">
+                  <FaCartShopping /> Add to cart
+                </div>
+              </>
             )}
           </button>
         </div>
