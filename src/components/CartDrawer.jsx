@@ -2,7 +2,7 @@ import { useCart } from "../context/CartContext";
 import { useState } from "react";
 
 export default function CartDrawer() {
-  const { cart } = useCart();
+  const { cart, removeFromCart } = useCart(); // 👈 grab removeFromCart
   const [open, setOpen] = useState(false);
   const items = Object.values(cart.items);
 
@@ -36,10 +36,10 @@ export default function CartDrawer() {
               <p className="text-gray-500">Cart is empty.</p>
             ) : (
               <ul className="space-y-4">
-                {items.map((item, index) => (
+                {items.map((item) => (
                   <li
-                    key={index}
-                    className="flex justify-between items-center border-b pb-2"
+                    key={item.id}
+                    className="flex justify-between items-start border-b pb-2"
                   >
                     <div>
                       <p className="font-semibold">{item.name}</p>
@@ -47,9 +47,17 @@ export default function CartDrawer() {
                         {item.count} × ${item.price.toFixed(2)}
                       </p>
                     </div>
-                    <p className="font-bold">
-                      ${(item.price * item.count).toFixed(2)}
-                    </p>
+                    <div className="text-right">
+                      <p className="font-bold">
+                        ${(item.price * item.count).toFixed(2)}
+                      </p>
+                      <button
+                        className="text-xs text-red-600 hover:underline mt-1"
+                        onClick={() => removeFromCart(item.id)}
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </li>
                 ))}
               </ul>
