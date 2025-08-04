@@ -20,7 +20,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white text-black">
       <Navbar />
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row mt-10">
         <div className="w-full lg:w-[70%]">
           <ProductList />
         </div>
